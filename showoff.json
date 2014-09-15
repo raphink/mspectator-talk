@@ -12,6 +12,17 @@
   "version": "0.9.7",
   "feedback": true,
   "sections": [
-    "Slides/Intro.md"
+    "Slides/Intro.md",
+    "Slides/Treetester.md",
+    "Slides/Treetester_filters.md",
+    "Slides/Treetester_reports.md",
+    "Slides/Rspec_puppet.md",
+    "Slides/Puppet_spec.md",
+    "Slides/Serverspec.md",
+    "Slides/Serverspec_Backends.md",
+    "Slides/MCollective_spec.md",
+    "Slides/Mspectator.md",
+    "Slides/Mspectator_Architecture.md",
+    "Slides/Mspectator_syntax.md"
   ]
 }
