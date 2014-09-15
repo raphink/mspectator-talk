@@ -1,0 +1,6 @@
+# Contribute
+
+On GitHub:
+
+* `puppet-spec`: https://github.com/raphink/puppet-spec
+* `mspectator`: https://github.com/raphink/mspectator
