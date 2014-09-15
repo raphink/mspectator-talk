@@ -1,0 +1,17 @@
+{
+  "name": "Orchestrated Functional Testing with Puppet-spec and Mspectator",
+  "description": "Orchestrated Functional Testing with Puppet-spec and Mspectator",
+  "favicon": "file/_images-base/favicon.ico",
+  "protected": [
+    "presenter",
+    "onepage",
+    "print"
+  ],
+  "user": "mspectator",
+  "password": "puppet-spec",
+  "version": "0.9.7",
+  "feedback": true,
+  "sections": [
+    "Slides/Intro.md"
+  ]
+}
