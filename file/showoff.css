@@ -129,6 +129,10 @@
       top: -34px;
     }
 
+    #title_c2c {
+      background: url('_images-base/camptocamp_square_400.png') left no-repeat;
+    }
+
     #slideInfo:after {
       background: url('_images-base/mountain.png') top right no-repeat;
       background-size: 15px 15px;
