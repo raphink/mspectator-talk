@@ -122,7 +122,7 @@
     }
 
     #footer {
-      background: url('/image/_images-base/camptocamp_200.png') left no-repeat;
+      background: url('/file/_images-base/camptocamp_200.png') left no-repeat;
       text-align: right;
       height: 30px;
       line-height: 30px;
@@ -316,13 +316,13 @@
 
     /* layout & background for exercises and labs */
     .content.exercise > h1:first-of-type {
-	    background: white url('_images-base/exercise.png') no-repeat top right;
+	    background: white url('file/_images-base/exercise.png') no-repeat top right;
 	    height: 100px;
         padding-right: 100px;
     }
 
     .content.lab > h1:first-of-type {
-        background: white url('_images-base/lab.png') no-repeat top right;
+        background: white url('file/_images-base/lab.png') no-repeat top right;
         height: 100px;
         padding-right: 100px;
     }
@@ -392,12 +392,12 @@
    }
   
   .content.exercise > h1:first-of-type {
-  	background: white url('_images-base/exercise-sm.png') no-repeat top right;
+  	background: white url('file/_images-base/exercise-sm.png') no-repeat top right;
   	height: 50px;
   }
 
   .content.lab > h1:first-of-type {
-    background: white url('_images-base/lab-sm.png') no-repeat top right;
+    background: white url('file/_images-base/lab-sm.png') no-repeat top right;
     height: 50px;
   }
   
