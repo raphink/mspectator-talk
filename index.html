@@ -153,13 +153,92 @@
 </div>
 </div>
 </body></html><html><body>
+<div id="Intro/Conformity_tests" class="slide " data-transition="none">
+<div class="content " ref="Intro/Conformity_tests">
+<h1>Conformity Tests</h1>
+
+<ul>
+<li>Check if machines comply to standards</li>
+<li>Avoid permanent heavy monitoring checks</li>
+<li>Tests must be inter-dependent</li>
+<li>Focus on getting sysadmins to fix one thing at a time to converge toward standards</li>
+</ul>
+</div>
+</div>
+</body></html><html><body>
 <div id="Treetester/Treetester" class="slide " data-transition="none">
 <div class="content " ref="Treetester/Treetester">
-<h1>Conformity tests</h1>
+<h1>Treetester</h1>
+
+<ul>
+<li>Back in 2008</li>
+<li>Written in Perl</li>
+<li>Not open-sourced :'-(</li>
+<li>Orchestrate conformity tests on a 4k+ server fleet</li>
+</ul>
 
 <div class="notes"><p>
 * 2008, with 2 years of Cfengine and 1 year of tests with Puppet
 </p></div>
+</div>
+</div>
+</body></html><html><body>
+<div id="Treetester/Treetester_example_modules" class="slide " data-transition="none">
+<div class="content " ref="Treetester/Treetester_example_modules">
+<h1>Treetester: modules output</h1>
+
+<ul>
+<li>For all hosts/modules</li>
+<li>Number of hosts filtered per module</li>
+<li>Modules dependency tree</li>
+<li>Colors by priority</li>
+</ul>
+
+<p><img src="./file/Treetester/../images-base/treetester_modules_1000.png" alt="Treetester modules example"></p>
+</div>
+</div>
+</body></html><html><body>
+<div id="Treetester/Treetester_example_host" class="slide " data-transition="none">
+<div class="content " ref="Treetester/Treetester_example_host">
+<h1>Treetester: host output</h1>
+
+<ul>
+<li>For each host</li>
+<li>Failed steps in the module tree</li>
+<li>Green: OK, Red: KO, Purple: Ignored</li>
+</ul>
+
+<p><img src="./file/Treetester/../images-base/treetester_host_1000.png" alt="Treetester host example"></p>
+</div>
+</div>
+</body></html><html><body>
+<div id="Treetester/Treetester_architecture" class="slide " data-transition="none">
+<div class="content " ref="Treetester/Treetester_architecture">
+<h1>Treetester architecture</h1>
+
+<ul>
+<li>All data in a database (MySQL)</li>
+<li>Tests scripts output YAML</li>
+<li>Tests scripts can be local (hosts as STDIN) or distant (ssh or http)</li>
+<li>Tests are inter-dependent</li>
+<li>Generate filtered data as a tree</li>
+<li>Generate graphs (graphviz)</li>
+</ul>
+</div>
+</div>
+</body></html><html><body>
+<div id="Treetester/Treetester_filters" class="slide " data-transition="none">
+<div class="content " ref="Treetester/Treetester_filters">
+<h1>Treetester filters</h1>
+
+<ul>
+<li>For each test/module</li>
+<li>Based on data in MySQL (joins and additional SQL conditions)</li>
+<li>Allows to link tests to each other</li>
+<li>Like multiple tamises</li>
+</ul>
+
+<p><img src="./file/Treetester/../images-base/tamises_800.jpg" alt="Tamises"></p>
 </div>
 </div>
 </body></html></div>
