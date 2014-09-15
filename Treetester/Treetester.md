@@ -1,4 +1,9 @@
-# Conformity tests 
+# Treetester
+
+* Back in 2008
+* Written in Perl
+* Not open-sourced :'-(
+* Orchestrate conformity tests on a 4k+ server fleet
 
 
 ~~~SECTION:notes~~~
