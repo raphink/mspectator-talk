@@ -1,8 +1,8 @@
-# Serverspec
+# Puppet-spec: Functional testing
 
-* http://serverspec.org
-* Provides RSpec matchers for local functional tests (packages, users, services, ports, etc.)
-* Independant from configuration management tools
+* Uses `serverspec`/`specinfra` matchers
+* Tests the machine state (not the catalog)
+
 
         @@@ Ruby
         require 'spec_helper'
