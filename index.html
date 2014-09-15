@@ -39,6 +39,10 @@
 
   
     
+      <script type="text/javascript" src=".//js/sh_lang/sh_ruby.min.js"></script>
+    
+      <script type="text/javascript" src=".//js/sh_lang/sh_shell.min.js"></script>
+    
   
 
   
@@ -173,7 +177,6 @@
 <ul>
 <li>Back in 2008</li>
 <li>Written in Perl</li>
-<li>Not open-sourced :'-(</li>
 <li>Orchestrate conformity tests on a 4k+ server fleet</li>
 </ul>
 
@@ -239,6 +242,343 @@
 </ul>
 
 <p><img src="./file/Treetester/../images-base/tamises_800.jpg" alt="Tamises"></p>
+</div>
+</div>
+</body></html><html><body>
+<div id="Treetester/Treetester_future" class="slide " data-transition="none">
+<div class="content " ref="Treetester/Treetester_future">
+<h1>Treetester: future?</h1>
+
+<ul>
+<li>Not open-sourced :'-(</li>
+<li>Too monolithic/not flexible enough</li>
+<li>Heavily linked to specific architecture</li>
+<li>Needed a rewrite</li>
+</ul>
+</div>
+</div>
+</body></html><html><body>
+<div id="Puppet_Spec/Intro" class="slide " data-transition="none">
+<div class="content " ref="Puppet_Spec/Intro">
+<h1>Adding specs to Puppet runs</h1>
+
+<ul>
+<li>Testing the catalog before it gets applied</li>
+<li>Testing the node after the catalog is applied</li>
+</ul>
+
+<p>Enter the <a href="https://github.com/raphink/puppet-spec">Puppet-spec module</a></p>
+</div>
+</div>
+</body></html><html><body>
+<div id="Puppet_Spec/Rspec_puppet" class="slide " data-transition="none">
+<div class="content " ref="Puppet_Spec/Rspec_puppet">
+<h1>Rspec-puppet</h1>
+
+<ul>
+<li>http://rspec-puppet.com</li>
+<li>Now the standard to unit test Puppet manifests</li>
+<li>Generates catalogs in clean environments</li>
+<li>
+<p>Asserts catalogs for resources/classes</p>
+
+<pre class="sh_ruby"><code>require 'spec_helper'
+
+describe 'logrotate::rule' do
+  let(:title) { 'nginx' }
+
+  it { should compile.with_all_deps }    
+  it { should contain_class('logrotate::setup') }
+end</code></pre>
+</li>
+</ul>
+</div>
+</div>
+</body></html><html><body>
+<div id="Puppet_Spec/Puppet_spec" class="slide " data-transition="none">
+<div class="content " ref="Puppet_Spec/Puppet_spec">
+<h1>Puppet-spec</h1>
+
+<ul>
+<li>Runs tests from within Puppet runs</li>
+<li>Test catalogs using rspec-puppet</li>
+<li>Test hosts using serverspec</li>
+</ul>
+
+<div class="notes"><p>
+1) Catalog compilation
+2) Unit tests (master or agent side)
+3) Catalog application (if tests passed)
+4) Functional tests (using serverspec)
+5) Amend report with functional tests results
+</p></div>
+</div>
+</div>
+</body></html><html><body>
+<div id="Puppet_Spec/Unit_syntax" class="slide " data-transition="none">
+<div class="content " ref="Puppet_Spec/Unit_syntax">
+<h1>Puppet-spec: Unit testing</h1>
+
+<ul>
+<li>Catalog exposed by <code>PuppetSpec::Catalog.instance.catalog</code>
+</li>
+<li>Uses <code>rspec-puppet</code> matchers</li>
+<li>Asserts real catalogs</li>
+<li>
+<p>Runs on the master or agent side (as catalog indirection terminii)</p>
+
+<pre class="sh_ruby"><code>describe 'puppet' do
+  subject { PuppetSpec::Catalog.instance.catalog }
+  it { should contain_package('puppet') }
+  it { should contain_package('ppet') }
+  it { should include_class('puppet') }
+  it { should include_class('puppet::client::base') }
+end</code></pre>
+</li>
+</ul>
+</div>
+</div>
+</body></html><html><body>
+<div id="Puppet_Spec/Unit_output" class="slide " data-transition="none">
+<div class="content " ref="Puppet_Spec/Unit_output">
+<h1>Puppet-spec: Unit tests output</h1>
+
+<pre class="sh_shell"><code># puppet agent -t
+info: Retrieving plugin
+err: Could not retrieve catalog from remote server: Unit tests failed:
+F..
+
+Failures:
+
+  1) package 
+     Failure/Error: it { should contain_package('augeas') }
+       expected that the catalogue would contain Package[augeas]
+     # /var/lib/puppet/lib/spec/class/augeas/package_spec.rb:3
+     # /var/lib/puppet/lib/puppet/indirector/catalog/rest_spec.rb:31:in `find'
+
+Finished in 0.00092 seconds
+3 examples, 1 failure
+
+Failed examples:
+
+rspec /var/lib/puppet/lib/spec/class/augeas/package_spec.rb:3 # package 
+
+info: Not using expired catalog for foo.example.com from cache; expired at Tue Apr 02 17:40:21 +0200 2013
+notice: Using cached catalog</code></pre>
+
+<div class="notes"><p>
+This example is on the master side
+</p></div>
+</div>
+</div>
+</body></html><html><body>
+<div id="Puppet_Spec/Unit_deploy" class="slide " data-transition="none">
+<div class="content " ref="Puppet_Spec/Unit_deploy">
+<h1>Puppet-spec: Deploying unit tests</h1>
+
+<ul>
+<li>
+<p>On the master side:</p>
+
+<ul>
+<li>Tests are located in the <code>spec/catalog/class</code> directory of the environment</li>
+<li>Only the directories named after classes declared in the catalog are tested</li>
+</ul>
+</li>
+<li>
+<p>On the agent side:</p>
+
+<ul>
+<li>Deploy tests using pluginsync</li>
+<li>Tests are located in the <code>lib/spec/catalog/class</code> directory of each module</li>
+<li>Only the directories named after classes declared in the catalog are tested</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</body></html><html><body>
+<div id="Puppet_Spec/Unit_limits" class="slide " data-transition="none">
+<div class="content " ref="Puppet_Spec/Unit_limits">
+<h1>Puppet-spec: Unit tests limits</h1>
+
+<ul>
+<li>When to apply the tests (currently based on class names)</li>
+<li>Tests on master, or need to deploy all tests with pluginsync</li>
+<li>Redundant with existing unit tests, or additional security?</li>
+</ul>
+</div>
+</div>
+</body></html><html><body>
+<div id="Puppet_Spec/Unit_setting" class="slide " data-transition="none">
+<div class="content " ref="Puppet_Spec/Unit_setting">
+<h1>Puppet-spec: Setting up Unit testing</h1>
+
+<ul>
+<li>Tests achieved from catalog indirection terminii</li>
+<li>Plugins (terminii) deployed with pluginsync</li>
+<li>
+<p>Setup done in <code>routes.yaml</code>:</p>
+
+<pre><code>agent:
+  catalog:
+    # Either on the agent side
+    terminus: rest_spec
+    cache: yaml
+master:
+  catalog:
+    # Or on the master side
+    terminus: compiler_spec
+</code></pre>
+</li>
+</ul>
+</div>
+</div>
+</body></html><html><body>
+<div id="Puppet_Spec/Serverspec" class="slide " data-transition="none">
+<div class="content " ref="Puppet_Spec/Serverspec">
+<h1>Serverspec</h1>
+
+<ul>
+<li>http://serverspec.org</li>
+<li>Provides RSpec matchers for local functional tests (packages, users, services, ports, etc.)</li>
+<li>
+<p>Independant from configuration management tools</p>
+
+<pre class="sh_ruby"><code>require 'spec_helper'
+
+describe package('httpd') do
+  it { should be_installed }
+end
+
+describe service('httpd') do
+  it { should be_enabled   }
+  it { should be_running   }
+end
+
+describe port(80) do
+  it { should be_listening }
+end
+
+describe file('/etc/httpd/conf/httpd.conf') do
+  it { should be_file }
+  its(:content) { should match /ServerName www.example.jp/ }
+end</code></pre>
+</li>
+</ul>
+</div>
+</div>
+</body></html><html><body>
+<div id="Puppet_Spec/Serverspec_Backends" class="slide " data-transition="none">
+<div class="content " ref="Puppet_Spec/Serverspec_Backends">
+<h1>Serverspec backends</h1>
+
+<p>Allows to use various means of launching tests:</p>
+
+<ul>
+<li>SSH (default)</li>
+<li>Exec</li>
+<li>
+<p>Puppet (RAL, removed from core)</p>
+
+<pre class="sh_shell"><code>$ serverspec-init
+Select OS type:
+
+  1) UN*X
+  2) Windows
+
+Select number: 1
+
+Select a backend type:
+
+  1) SSH
+  2) Exec (local)
+
+Select number: 1</code></pre>
+</li>
+</ul>
+</div>
+</div>
+</body></html><html><body>
+<div id="Puppet_Spec/Functional_syntax" class="slide " data-transition="none">
+<div class="content " ref="Puppet_Spec/Functional_syntax">
+<h1>Puppet-spec: Functional testing</h1>
+
+<ul>
+<li>Uses <code>serverspec</code>/<code>specinfra</code> matchers</li>
+<li>
+<p>Tests the machine state (not the catalog)</p>
+
+<pre class="sh_ruby"><code>require 'spec_helper'
+
+describe package('httpd') do
+  it { should be_installed }
+end
+
+describe service('httpd') do
+  it { should be_enabled   }
+  it { should be_running   }
+end
+
+describe port(80) do
+  it { should be_listening }
+end
+
+describe file('/etc/httpd/conf/httpd.conf') do
+  it { should be_file }
+  its(:content) { should match /ServerName www.example.jp/ }
+end</code></pre>
+</li>
+</ul>
+</div>
+</div>
+</body></html><html><body>
+<div id="Puppet_Spec/Functional_output" class="slide " data-transition="none">
+<div class="content " ref="Puppet_Spec/Functional_output">
+<h1>Puppet-spec: Function tests output</h1>
+
+<pre class="sh_shell"><code># puppet agent  -t
+info: Retrieving plugin
+info: Caching catalog for foo.example.com
+info: Applying configuration version 'raphink/a2c8e0f [+]'
+... Applying changes ...
+notice: Finished catalog run in 59.19 seconds
+err: Could not send report: Unit tests failed:
+FF
+
+Failures:
+
+  1) augeas 
+     Failure/Error: it { should be_installed }
+       expected "augeas" to be installed
+     # /var/lib/puppet/lib/spec/server/class/foo.example.com/package_spec.rb:2
+     # /var/lib/puppet/lib/puppet/indirector/report/rest_spec.rb:45:in `save'
+
+  2) /usr/share/augeas/lenses/dist 
+     Failure/Error: it { should be_file }
+       expected "/usr/share/augeas/lenses/dist" to be file
+     # /var/lib/puppet/lib/spec/server/class/foo.example.com/package_spec.rb:6
+     # /var/lib/puppet/lib/puppet/indirector/report/rest_spec.rb:45:in `save'
+
+Finished in 0.06033 seconds
+2 examples, 2 failures
+
+Failed examples:
+
+rspec /var/lib/puppet/lib/spec/server/class/foo.example.com/package_spec.rb:2 # augeas 
+rspec /var/lib/puppet/lib/spec/server/class/foo.example.com/package_spec.rb:6 # /usr/share/augeas/lenses/dist </code></pre>
+</div>
+</div>
+</body></html><html><body>
+<div id="Puppet_Spec/Functional_deploy" class="slide " data-transition="none">
+<div class="content " ref="Puppet_Spec/Functional_deploy">
+<h1>Puppet-spec: Deploying functional tests</h1>
+
+<ul>
+<li>Tests are run after catalog application</li>
+<li>Tests can be distributed via pluginsync (in the <code>spec/server/class</code>) directory of each module</li>
+<li>Tests can be distributed with <code>file</code> Puppet resources, optionally using the <code>spec::serverspec</code> defined resource type</li>
+</ul>
 </div>
 </div>
 </body></html></div>
