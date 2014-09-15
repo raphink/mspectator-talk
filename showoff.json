@@ -12,17 +12,19 @@
   "version": "0.9.7",
   "feedback": true,
   "sections": [
-    "Slides/Intro.md",
-    "Slides/Treetester.md",
-    "Slides/Treetester_filters.md",
-    "Slides/Treetester_reports.md",
-    "Slides/Rspec_puppet.md",
-    "Slides/Puppet_spec.md",
-    "Slides/Serverspec.md",
-    "Slides/Serverspec_Backends.md",
-    "Slides/MCollective_spec.md",
-    "Slides/Mspectator.md",
-    "Slides/Mspectator_Architecture.md",
-    "Slides/Mspectator_syntax.md"
+    "Intro/Intro.md",
+    "Intro/Conformity_tests.md",
+    "Treetester/Treetester.md",
+    "Treetester/Treetester_architecture.md",
+    "Treetester/Treetester_filters.md",
+    "Treetester/Treetester_reports.md",
+    "Puppet_Spec/Rspec_puppet.md",
+    "Puppet_Spec/Puppet_spec.md",
+    "Puppet_Spec/Serverspec.md",
+    "Puppet_Spec/Serverspec_Backends.md",
+    "Puppet_Spec/MCollective_spec.md",
+    "Mspectator/Mspectator.md",
+    "Mspectator/Mspectator_Architecture.md",
+    "Mspectator/Mspectator_syntax.md"
   ]
 }
