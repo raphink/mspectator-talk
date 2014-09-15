@@ -37,6 +37,7 @@
     "Puppet_Spec/MCollective_spec.md",
     "Mspectator/Mspectator.md",
     "Mspectator/Mspectator_Architecture.md",
-    "Mspectator/Mspectator_syntax.md"
+    "Mspectator/Mspectator_syntax.md",
+    "Mspectator/Mspectator_output.md"
   ]
 }
