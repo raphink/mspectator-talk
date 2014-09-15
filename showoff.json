@@ -39,6 +39,7 @@
     "Mspectator/Mspectator_Architecture.md",
     "Mspectator/Mspectator_syntax.md",
     "Mspectator/Mspectator_output.md",
+    "Mspectator/Demo.md",          // Using PE in VMs
     "Outro/Contribute.md",
     "Outro/Outro.md"
   ]
