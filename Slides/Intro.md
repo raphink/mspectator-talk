@@ -1,5 +1,5 @@
 <!SLIDE center cover>
-# Orchestrated Functional Testing<br />with Puppet-spec and Mspectator
+# Orchestrated Functional<br />Testing with Puppet-spec<br />and Mspectator
 
 ## Raphaël Pinson
 
