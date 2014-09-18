@@ -1,0 +1,11 @@
+puppet-spec requirements:
+
+* rspec (~> 2.11.0)
+* rspec-puppet (+serverspec/specinfra)
+
+
+gonzo has the agent spec
+kermit has functional spec
+peadmin on master has the mspectator tests
+
+Demos on the command line (puppet agent + mspectator) + PE Console (reports & live management)
