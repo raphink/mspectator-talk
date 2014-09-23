@@ -5,3 +5,4 @@
 * Calls MCollective to achieve tests
 * Uses MCollective `spec` agent (among others)
  
+![Radar](../images-base/radar_600.jpg)

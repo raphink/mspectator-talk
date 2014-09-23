@@ -6,5 +6,5 @@
 * Like multiple tamises
 
 
-![Tamises](../images-base/tamises_800.jpg)
+![Tamises](../images-base/tamises_500.jpg)
 
