@@ -1,5 +1,5 @@
 # Monitoring vs. Functional Tests
 
-## Complementary of redundant?
+## Complementary or redundant?
 
 ![Defibrillator](../images-base/defibrillator.jpg)
