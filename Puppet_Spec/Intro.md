@@ -6,3 +6,7 @@
 ![Screening](../images-base/screening.jpg)
 
 Enter the [Puppet-spec module](https://github.com/raphink/puppet-spec)
+
+~~~SECTION:notes~~~
+related: https://github.com/hunner/puppet-policy_compiler
+~~~ENDSECTION~~~
