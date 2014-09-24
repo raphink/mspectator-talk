@@ -1,11 +1,43 @@
-puppet-spec requirements:
+# puppet-spec requirements:
 
 * rspec (~> 2.11.0)
 * rspec-puppet (+serverspec/specinfra)
 
 
-gonzo has the agent spec
-kermit has functional spec
-peadmin on master has the mspectator tests
+# Demo
+
+* gonzo has the agent spec
+* kermit has functional spec
+* peadmin on master has the mspectator tests
 
 Demos on the command line (puppet agent + mspectator) + PE Console (reports & live management)
+
+## Puppet-spec unit
+
+* As root
+* Go to /etc/puppetlabs/puppet
+* Show the spec/ dir for master-side tests
+* Show the modules/policies/lib/spec/catalog dir for agent-side tests
+* Run an agent on gonzo to show the failures
+
+
+## Puppet-spec functional
+
+* Show the modules/policies/lib/spec/server dir for functional tests
+* Run an agent on kermit to show the failures
+
+
+## mco spec
+
+* Su as peadmin
+* Run mco spec example commands:
+   - mco rpc spec check action=user values=root
+   - mco rpc spec check action=running values=httpd
+   - mco rpc spec check action=user values=peadmin -F osfamily=Debian
+   - mco rpc spec run -I kermit.mspectator.vm
+
+## mspectator
+
+* As peadmin
+* Go to the mspectator dir
+* Run `rake spec` (sorry about rspec 3...)
