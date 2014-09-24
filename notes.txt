@@ -6,6 +6,8 @@
 
 # Demo
 
+Prepare a byobu with shells logged in to each machine and named!
+
 * gonzo has the agent spec
 * kermit has functional spec
 * peadmin on master has the mspectator tests
