@@ -8,7 +8,7 @@
     body > #preso,
     body > #preso > .slide {
 /* Allows the height to vary by a handful of pixels based on what browser chrome is visible. */
-        height: 720px;
+        height: 760px;
         width: 1280px;
 
 /* static heights to fit different browser configurations. Safari values. */
