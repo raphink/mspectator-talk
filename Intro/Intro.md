@@ -1,5 +1,5 @@
 <!SLIDE center cover>
-# Orchestrated Functional Testing with Puppet-spec<br /> and Mspectator
+# Test everything<br />with Puppet Policy
 
 ## Raphaël Pinson
 
