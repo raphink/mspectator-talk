@@ -1,4 +1,4 @@
-# Puppet-spec
+# Puppet-policy
 
 * Runs tests from within Puppet runs
 * Test catalogs using rspec-puppet
